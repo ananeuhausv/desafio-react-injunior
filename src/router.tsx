@@ -3,6 +3,7 @@ import Login from "./pages/LoginPage";
 import Home from "./pages/HomePage";
 import Genre from "./pages/GenrePage";
 import Details from "./pages/BookDetailsPage";
+import RootLayout from "./RootLayout";
 
 const router = createBrowserRouter([
     {
@@ -11,15 +12,21 @@ const router = createBrowserRouter([
     },
     {
         path: "/home",
-        element: <Home/>
-    },
-    {
-        path: "/genre",
-        element: <Genre/>
-    },
-    {
-        path: "/details",
-        element: <Details/>
+        element: <RootLayout/>,
+        children: [
+            {
+                index: true,
+                element: <Home/>
+            },
+            {
+                path: "genre",
+                element: <Genre/>
+            },
+            {
+                path: "details",
+                element: <Details/>
+            }
+        ]
     }
 ])
 
