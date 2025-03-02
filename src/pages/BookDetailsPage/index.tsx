@@ -1,19 +1,18 @@
+import styles from './styles.module.css'
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-
-interface Livro {
-    id: number;
-    titulo: string;
-    autor: string;
-    preco: number;
-    capa: string;
-    sinopse: string;
-}
+import { useNavigate, useParams } from "react-router-dom";
+import AddToCartButton from '../../components/AddToCartButton';
+import { Livro } from '../../types/Livro'
 
 export default function BookDetails() {
     const { id } = useParams(); 
-    const [livro, setLivro] = useState<Livro | null>(null)
+    const [livro, setLivro] = useState<Livro | null>(null);
+    const navigate = useNavigate();
+
+    function handleClick() {
+        navigate("/home");
+    }
 
     useEffect(() => {
         axios.get(`http://localhost:3000/livros/${id}`)
@@ -23,19 +22,27 @@ export default function BookDetails() {
 
     return (
         <>
-        <div>
-            <h1>Detalhes do Livro {id}</h1>
-        </div>
-        <div>
-            <img src={livro?.capa} alt="capa do livro" />
-        </div>
-        <div>
-            <h1>{livro?.titulo}</h1>
-            <h3>{livro?.autor}</h3>
+            <div className={styles.detailsButton}>
+                <button onClick={handleClick}> Detalhes do livro</button>
+            </div>
+            <div className={styles.bookContainer}>
+                <div className={styles.bookCover}>
+                    <img src={livro?.capa} alt="capa do livro" />
+                </div>
+                <div className={styles.bookInfoContainer}>
+                    <div className={styles.bookInfo}>
+                        <h1>{livro?.titulo}</h1>
+                        <h3>{livro?.autor}</h3>
+                    </div>
+                    <div className={styles.bookSynopsis}>
+                        <h3>Sinopse</h3>
+                        <p>{livro?.sinopse}</p> 
+                    </div>  
+                </div>
+            </div>
 
-            <p>{livro?.sinopse}</p>
-        </div>
-        <button>{livro?.preco} Adicionar ao carrinho</button>
+            {livro && <AddToCartButton livro={livro}/>}
+            
         </>
     );
 }
