@@ -3,16 +3,7 @@ import { useEffect, useState } from 'react'
 import banner from '../../assets/bannerArea.png'
 import axios from 'axios';
 import CardGenero from '../../components/CardGenero';
-
-interface Livro {
-    id: number;
-    titulo: string;
-    autor: string;
-    genero: string;
-    preco: number;
-    sinopse: string;
-    capa: string;
-}
+import { Livro } from '../../types/Livro'
 
 export default function HomePage() {
 
@@ -25,8 +16,11 @@ export default function HomePage() {
     }, [])
 
     const livrosPorGenero: { [key: string]: Livro[] } = livros.reduce((acc, livro) => {
+        if (!livro.genero) return acc;
+
         acc[livro.genero] = acc[livro.genero] || []
         acc[livro.genero].push(livro)
+
         return acc
     }, {} as { [key: string ]: Livro[] })
 
