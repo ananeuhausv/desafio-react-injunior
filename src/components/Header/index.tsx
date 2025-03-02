@@ -24,7 +24,7 @@ export default function Header() {
                     <img src={profile} alt="imagem de profile" />
                 </button>
                 <button>
-                    <img src={cart} alt="" />
+                    <img src={cart} alt="imagem do carrinho" />
                 </button>
                 </div>
             </div>
