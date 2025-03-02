@@ -1,15 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import CardLivro from '../CardLivro'
 import style from './styles.module.css'
-
-interface Livro {
-    id: number;
-    titulo: string;
-    autor: string;
-    genero: string;
-    preco: number;
-    capa: string;
-}
+import { Livro } from '../../types/Livro'
 
 interface CardGeneroProps {
     genero: string;
