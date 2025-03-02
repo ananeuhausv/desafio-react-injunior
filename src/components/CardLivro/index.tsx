@@ -29,7 +29,7 @@ export default function CardLivro( { livro }: CardLivroProps) {
                    <h4>{livro.titulo}</h4>
                     <p>{livro.autor}</p> 
                 </div>
-                <p>R$ {livro.preco}</p>
+                <p>R$ {livro.preco.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
             </div>
         </div>
     )
