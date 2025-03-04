@@ -19,7 +19,7 @@ const router = createBrowserRouter([
                 element: <Home/>
             },
             {
-                path: "genre",
+                path: "genre/:genero",
                 element: <Genre/>
             },
             {
