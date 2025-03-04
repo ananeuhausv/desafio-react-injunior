@@ -1,18 +1,15 @@
 import styles from './styles.module.css'
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import AddToCartButton from '../../components/AddToCartButton';
 import { Livro } from '../../types/Livro'
+import BackToHomeButton from '../../components/BackToHomeButton';
 
 export default function BookDetails() {
     const { id } = useParams(); 
     const [livro, setLivro] = useState<Livro | null>(null);
-    const navigate = useNavigate();
-
-    function handleClick() {
-        navigate("/home");
-    }
+    
 
     useEffect(() => {
         axios.get(`http://localhost:3000/livros/${id}`)
@@ -22,9 +19,7 @@ export default function BookDetails() {
 
     return (
         <>
-            <div className={styles.detailsButton}>
-                <button onClick={handleClick}> Detalhes do livro</button>
-            </div>
+            <BackToHomeButton text="Detalhes do livro"/>
             <div className={styles.bookContainer}>
                 <div className={styles.bookCover}>
                     <img src={livro?.capa} alt="capa do livro" />
