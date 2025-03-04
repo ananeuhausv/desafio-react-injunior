@@ -13,7 +13,7 @@ export default function CardGenero({ genero, livros }: CardGeneroProps) {
     const navigate = useNavigate()
 
     function handleClick() {
-        navigate("/home/genre")
+        navigate(`/home/genre/${genero}`)
     }
 
     const livrosFiltrados = livros.filter(livro => livro.genero === genero).slice(0,4)
