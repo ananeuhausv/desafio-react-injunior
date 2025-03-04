@@ -3,13 +3,17 @@
     flex-direction: column;
     gap: .5rem;
     margin: 10px 0;
+    width: 100%;
 }
 
 .about {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 85.625rem;
+    margin-left: 3rem;
+    margin-right: 2rem;
+    max-width: 82.5rem;    
+    flex-wrap: wrap;
 }
 
 .about > h1 {
@@ -18,7 +22,6 @@
     line-height: 2.75rem;
     color: #090937;
     padding: 1rem;
-    margin-left: 3rem;
 }
 
 .about > p {
@@ -35,4 +38,6 @@
     overflow-x: auto;
     margin-left: auto;
     margin-right: auto;
+    flex-wrap: wrap;
+    justify-content: center;
 }
