@@ -1,51 +1,16 @@
-# React + TypeScript + Vite
+# Desafio React proposto pela IN Junior - UFF
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Neste repostiório, a proposta foi desenvolver um e-commerce de livros em React, utilizando os
+conhecimentos adquiridos na especialização front-end do treinamento.
 
-Currently, two official plugins are available:
+Este website possui quatro páginas, sendo elas: Página de Login, Página de Home, Página do Gênero Literário e Detalhes do Livro(Página individual). 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A página de Login redireciona para a Home Page, ao clicar no botão de Login. Os campos de e-mail e senha possuem verificações (e-mail deve ser válido e senha deve ter mais de 6 caracteres, ambos não podem estar vazios).
 
-## Expanding the ESLint configuration
+A Home Page exibe os 4 primeiros livros de cada gênero presente no arquivo .json. 
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+O botão "Ver mais", na Home Page, leva para a página do Gênero Literário, em que são exibidos todos os livros de um gênero literário. A página do Gênero Literário possui um filtro de "Pesquisar por título" que permite ao usuário pesquisar um livro por seu título. 
 
-- Configure the top-level `parserOptions` property like this:
+Tanto na Home Page, quanto na página do Gênero Literário, clicar no card de um livro leva o usuário para a página individual desse livro.   
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
-# desafio-react-injunior
+A página individual do livro exibe seu título, autor, sinopse e preço. O botão "< Detalhes do Livro" leva o usuário de volta para a Home Page.
